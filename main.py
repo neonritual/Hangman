@@ -5,7 +5,8 @@ import hangman_art
 import hangman_words
 
 #TODO-1: - Update the word list to use the 'word_list' from hangman_words.py
-chosen_word = random.choice(hangman_words.word_list)
+from hangman_words import word_list
+chosen_word = random.choice(word_list)
 word_length = len(chosen_word)
 
 end_of_game = False
@@ -26,11 +27,9 @@ while not end_of_game:
     guess = input("\nGuess a letter: ").lower()
 
     #TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
+    if guess in display:
+      print(f"\nYou've already guessed '{guess}'.\n")
 
-    for answers in display:
-      if answers == guess:
-        print(f"\nYou've already guessed the letter '{guess}'.\n")
-        break
 
     #Check guessed letter
     for position in range(word_length):
@@ -42,7 +41,7 @@ while not end_of_game:
     #Check if user is wrong.
     if guess not in chosen_word:
         #TODO-5: - If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
-        print(f"\nThere is no '{guess}'' in the word.\n")
+        print(f"\nThere is no '{guess}' in the word.\n")
         lives -= 1
         if lives == 0:
             end_of_game = True
