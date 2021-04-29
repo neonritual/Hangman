@@ -3,6 +3,7 @@
 import random
 import hangman_art
 import hangman_words
+from replit import clear
 
 #TODO-1: - Update the word list to use the 'word_list' from hangman_words.py
 from hangman_words import word_list
@@ -25,6 +26,8 @@ for _ in range(word_length):
 
 while not end_of_game:
     guess = input("\nGuess a letter: ").lower()
+
+    clear()
 
     #TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
     if guess in display:
